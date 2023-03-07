@@ -1,0 +1,2 @@
+# ping
+Realtime ping Statistics
