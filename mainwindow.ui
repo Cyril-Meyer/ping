@@ -29,7 +29,7 @@
      </widget>
     </item>
     <item row="2" column="0" colspan="8">
-     <widget class="QGraphicsView" name="graphicsView"/>
+     <widget class="QChartView" name="graphicsView"/>
     </item>
     <item row="0" column="2">
      <widget class="QSpinBox" name="spinBox_ip_2">
@@ -137,6 +137,13 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QChartView</class>
+   <extends>QGraphicsView</extends>
+   <header>qchartview.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

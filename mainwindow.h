@@ -1,16 +1,20 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
 #include <QMainWindow>
 #include <QTimer>
 #include <QFuture>
 #include <QtConcurrent/QtConcurrentRun>
+#include <QLineSeries>
+#include <QDateTime>
 
 #include <QDebug>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
+
+using namespace QtCharts;
+
 
 class MainWindow : public QMainWindow
 {
@@ -30,6 +34,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QTimer *ping_timer;
+    QLineSeries *pings;
 
     /*
      * learn.microsoft.com/en-us/windows/win32/api/icmpapi/nf-icmpapi-icmpsendecho

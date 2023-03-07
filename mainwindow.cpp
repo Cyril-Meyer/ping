@@ -14,6 +14,8 @@ MainWindow::MainWindow(QWidget *parent)
     ping_timer = new QTimer();
     connect(ping_timer, SIGNAL(timeout()),
             this, SLOT(on_pushButton_ping_clicked()));
+
+    pings = new QLineSeries();
 }
 
 MainWindow::~MainWindow()
@@ -26,6 +28,13 @@ void MainWindow::on_pushButton_ping_clicked()
     // newPing();
     auto lambda = [&](){this->newPing();};
     QFuture<void> future = QtConcurrent::run(lambda);
+
+    QChart *pings_chart = new QChart();
+    pings_chart->legend()->hide();
+    pings_chart->addSeries(this->pings);
+    pings_chart->createDefaultAxes();
+
+    ui->graphicsView->setChart(pings_chart);
 }
 
 void MainWindow::on_checkBox_ping_stateChanged(int arg1)
@@ -52,6 +61,8 @@ void MainWindow::on_spinBox_freq_valueChanged(int)
 void MainWindow::newPing()
 {
     long time = this->ping();
+
+    this->pings->append(QDateTime::currentMSecsSinceEpoch(), time);
 
     ui->lcdNumber->display((int)time);
 }
