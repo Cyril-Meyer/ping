@@ -13,3 +13,6 @@ HEADERS += \
 
 FORMS += \
     mainwindow.ui
+
+LIBS += -lwsock32
+LIBS += -liphlpapi
